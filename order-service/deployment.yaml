@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: order-service
   annotations:
-    argocd-image-updater.argoproj.io/image-list: user-service=536697223481.dkr.ecr.us-east-1.amazonaws.com/user-service
+    argocd-image-updater.argoproj.io/image-list: user-service=536697223481.dkr.ecr.us-east-1.amazonaws.com/order-service
     argocd-image-updater.argoproj.io/user-service.update-strategy: latest
     argocd-image-updater.argoproj.io/user-service.force-update: "true"
   labels:
