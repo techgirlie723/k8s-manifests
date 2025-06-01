@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-service
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: user-service=536697223481.dkr.ecr.us-east-1.amazonaws.com/user-service
+    argocd-image-updater.argoproj.io/user-service.update-strategy: latest
+    argocd-image-updater.argoproj.io/user-service.force-update: "true"
+  labels:
+    app: user-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: user-service
+  template:
+    metadata:
+      labels:
+        app: user-service
+    spec:
+      containers:
+      - name: user-service
+        image: 536697223481.dkr.ecr.us-east-1.amazonaws.com/user-service:e18068cc64417a83e9b0e06b82629729305870f1
+        ports:
+        - containerPort: 3001
